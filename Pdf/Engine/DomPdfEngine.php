@@ -42,9 +42,10 @@ class DomPdfEngine extends AbstractPdfEngine {
 			return;
 		}
 
-		foreach ($options as $option => $value) {
-			$dompdf->setOption($option, $value);
-		}
+		$domOptions = $dompdf->getOptions();
+		$domOptions->set($options);
+
+		$dompdf->setOptions($domOptions);
 	}
 
 	private function fixEncoding() : string
